@@ -19,6 +19,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import Switch from './Switch';
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -70,7 +71,7 @@ export default function CombinedComponent() {
 
 	const DrawerList = (
 		<Box sx={{ width: 250 }} role='presentation' onClick={toggleDrawer(false)}>
-			<List>
+			{/* <List>
 				{['Toggle theme'].map((text, index) => (
 					<ListItem key={text} disablePadding>
 						<ListItemButton>
@@ -79,6 +80,12 @@ export default function CombinedComponent() {
 						</ListItemButton>
 					</ListItem>
 				))}
+			</List> */}
+			<List>
+				<ListItem>
+					<ListItemText>Toggle theme</ListItemText>
+					<Switch />
+				</ListItem>
 			</List>
 			<Divider />
 			<List>
