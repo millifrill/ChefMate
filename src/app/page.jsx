@@ -1,9 +1,11 @@
+import RecipesBanner from './components/RecipesBanner';
 import styles from './page.module.css';
 
 export default function Home() {
 	return (
-		<main className={styles.main}>
-			<h1>ChefMate</h1>
-		</main>
+		<>
+			<RecipesBanner />
+			<main className={styles.main}></main>
+		</>
 	);
 }
