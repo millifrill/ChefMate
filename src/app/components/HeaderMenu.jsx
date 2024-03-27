@@ -70,17 +70,7 @@ export default function CombinedComponent() {
 	};
 
 	const DrawerList = (
-		<Box sx={{ width: 250 }} role='presentation' onClick={toggleDrawer(false)}>
-			{/* <List>
-				{['Toggle theme'].map((text, index) => (
-					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItemButton>
-					</ListItem>
-				))}
-			</List> */}
+		<Box sx={{ width: 250 }} onClick={toggleDrawer(false)}>
 			<List>
 				<ListItem>
 					<ListItemText>Toggle theme</ListItemText>
@@ -89,7 +79,7 @@ export default function CombinedComponent() {
 			</List>
 			<Divider />
 			<List>
-				{['Recepies', 'Contact'].map((text, index) => (
+				{['Recipes', 'Contact'].map((text, index) => (
 					<ListItem key={text} disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
@@ -106,7 +96,7 @@ export default function CombinedComponent() {
 	return (
 		<div>
 			<Box sx={{ flexGrow: 1 }}>
-				<AppBar position='static'>
+				<AppBar position='static' sx={{ backgroundColor: '#000' }}>
 					<Toolbar>
 						<IconButton
 							size='large'
@@ -121,7 +111,7 @@ export default function CombinedComponent() {
 							variant='h5'
 							noWrap
 							component='div'
-							sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+							sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: 'white' }}>
 							ChefMate
 						</Typography>
 						<Search>
