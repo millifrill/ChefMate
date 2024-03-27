@@ -20,6 +20,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Switch from './Switch';
+import Link from 'next/link';
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -70,23 +71,25 @@ export default function CombinedComponent() {
 	};
 
 	const DrawerList = (
-		<Box sx={{ width: 250 }} onClick={toggleDrawer(false)}>
-			<List>
+		<Box sx={{ width: 250, backgroundColor: '#000' }} onClick={toggleDrawer(false)}>
+			<List sx={{ backgroundColor: '#000' }}>
 				<ListItem>
-					<ListItemText>Toggle theme</ListItemText>
+					<ListItemText sx={{ color: '#fff' }}>Toggle theme</ListItemText>
 					<Switch />
 				</ListItem>
 			</List>
 			<Divider />
-			<List>
+			<List sx={{ backgroundColor: '#000', color: '#fff' }}>
 				{['Recipes', 'Contact'].map((text, index) => (
 					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								{index % 2 === 0 ? <MenuBookIcon /> : <MailIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItemButton>
+						<Link href={index % 2 === 0 ? '/' : '/contact'}>
+							<ListItemButton>
+								<ListItemIcon sx={{ color: '#fff' }}>
+									{index % 2 === 0 ? <MenuBookIcon /> : <MailIcon />}
+								</ListItemIcon>
+								<ListItemText primary={text} />
+							</ListItemButton>
+						</Link>
 					</ListItem>
 				))}
 			</List>

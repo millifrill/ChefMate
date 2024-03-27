@@ -4,11 +4,10 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 
 function Copyright() {
 	return (
-		<Typography variant='body2' color='text.secondary'>
+		<Typography variant='body2' color='#d8d8d8'>
 			{'Copyright © '}
 			ChefMate {new Date().getFullYear()}
 			{'.'}
@@ -24,12 +23,15 @@ export default function StickyFooter() {
 				py: 3,
 				px: 2,
 				mt: 'auto',
-				backgroundColor: 'grey',
+				backgroundColor: '#4c4c4c',
+				textAlign: 'center',
 				// backgroundColor: (theme) =>
 				// 	theme.palette.mode === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
 			}}>
 			<Container maxWidth='sm'>
-				<Typography variant='body1'>Lorum isum.</Typography>
+				<Typography variant='body1' color='#d8d8d8'>
+					Lorum isum.
+				</Typography>
 				<Copyright />
 			</Container>
 		</Box>
