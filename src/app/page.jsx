@@ -1,11 +1,24 @@
+'use client';
+/** @jsxImportSource @emotion/react */
+import styled from '@emotion/styled';
 import RecipesBanner from './components/RecipesBanner';
-import styles from './page.module.css';
+
+const Main = styled.main`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 4rem;
+	max-width: 800px;
+	margin: auto;
+	min-height: 100vh;
+`;
 
 export default function Home() {
 	return (
 		<>
 			<RecipesBanner />
-			<main className={styles.main}></main>
+			<Main></Main>
 		</>
 	);
 }
