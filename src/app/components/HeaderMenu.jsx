@@ -9,7 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import MailIcon from '@mui/icons-material/Mail';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -92,7 +92,9 @@ export default function CombinedComponent() {
 				{['Recepies', 'Contact'].map((text, index) => (
 					<ListItem key={text} disablePadding>
 						<ListItemButton>
-							<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+							<ListItemIcon>
+								{index % 2 === 0 ? <MenuBookIcon /> : <MailIcon />}
+							</ListItemIcon>
 							<ListItemText primary={text} />
 						</ListItemButton>
 					</ListItem>
