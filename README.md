@@ -8,9 +8,7 @@ Sätt upp ett Next.js projekt
 
 Minst 8 funktionskomponenter
 
-Hämta data från extern sida Valfritt att använda REST API eller GraphQL
-
-Skapa minst 3 statiskt genererade sidor med getStaticProps() (Det är OK att det är 1 sida som genererar minst 3 statiska sidor)
+Hämta data från extern sida. Valfritt att använda REST API eller GraphQL
 
 Skriv minst 3 test som passerar om man skriver "yarn test" / "npm test"
 
@@ -48,8 +46,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-  [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+-  [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 

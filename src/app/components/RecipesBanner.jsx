@@ -1,10 +1,10 @@
-import React from 'react';
 import Image from 'next/image';
-import BannerImg from '../assets/banner1.png';
+import BannerImg from '../assets/recipes.png';
+import { BannerContainer, ContentWrapper, Title } from '../global-styles';
 
 export default function RecipesBanner() {
 	return (
-		<div style={{ position: 'relative', width: '100%' }}>
+		<BannerContainer>
 			<Image
 				src={BannerImg}
 				alt={'Banner image'}
@@ -12,17 +12,9 @@ export default function RecipesBanner() {
 				objectFit='cover'
 				quality={100}
 			/>
-			<div
-				style={{
-					position: 'absolute',
-					top: '50%',
-					left: '50%',
-					transform: 'translate(-50%, -50%)',
-					color: 'white',
-					textAlign: 'center',
-				}}>
-				<h1>Recipes</h1>
-			</div>
-		</div>
+			<ContentWrapper>
+				<Title>Recipes</Title>
+			</ContentWrapper>
+		</BannerContainer>
 	);
 }
