@@ -25,10 +25,6 @@ export const BannerContainer = styled.div`
 	width: 100%;
 `;
 
-export const BannerImage = styled(Image)`
-	width: 100%;
-`;
-
 export const ContentWrapper = styled.div`
 	position: absolute;
 	top: 50%;
