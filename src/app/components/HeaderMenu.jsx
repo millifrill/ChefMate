@@ -22,48 +22,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Switch from './Switch';
 import Link from 'next/link';
 
-const Search = styled('div')(({ theme }) => ({
-	position: 'relative',
-	borderRadius: theme.shape.borderRadius,
-	backgroundColor: alpha(theme.palette.common.white, 0.15),
-	'&:hover': {
-		backgroundColor: alpha(theme.palette.common.white, 0.25),
-	},
-	marginLeft: 0,
-	width: '100%',
-	[theme.breakpoints.up('sm')]: {
-		marginLeft: theme.spacing(1),
-		width: 'auto',
-	},
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-	padding: theme.spacing(0, 2),
-	height: '100%',
-	position: 'absolute',
-	pointerEvents: 'none',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-	color: 'inherit',
-	width: '100%',
-	'& .MuiInputBase-input': {
-		padding: theme.spacing(1, 1, 1, 0),
-		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-		transition: theme.transitions.create('width'),
-		[theme.breakpoints.up('sm')]: {
-			width: '12ch',
-			'&:focus': {
-				width: '20ch',
-			},
-		},
-	},
-}));
-
-export default function CombinedComponent() {
+export default function HeaderMenu() {
 	const [open, setOpen] = React.useState(false);
 
 	const toggleDrawer = (newOpen) => () => {
@@ -78,8 +37,8 @@ export default function CombinedComponent() {
 					<Switch />
 				</ListItem>
 			</List>
-			<Divider />
-			<List sx={{ backgroundColor: '#000', color: '#fff' }}>
+			<Divider sx={{ backgroundColor: '#222' }} />
+			<List sx={{ backgroundColor: '#000', minHeight: '100vh', color: '#fff' }}>
 				{['Recipes', 'Contact'].map((text, index) => (
 					<ListItem key={text} disablePadding>
 						<Link href={index % 2 === 0 ? '/' : '/contact'}>
@@ -135,3 +94,44 @@ export default function CombinedComponent() {
 		</div>
 	);
 }
+
+const Search = styled('div')(({ theme }) => ({
+	position: 'relative',
+	borderRadius: theme.shape.borderRadius,
+	backgroundColor: alpha(theme.palette.common.white, 0.15),
+	'&:hover': {
+		backgroundColor: alpha(theme.palette.common.white, 0.25),
+	},
+	marginLeft: 0,
+	width: '100%',
+	[theme.breakpoints.up('sm')]: {
+		marginLeft: theme.spacing(1),
+		width: 'auto',
+	},
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+	padding: theme.spacing(0, 2),
+	height: '100%',
+	position: 'absolute',
+	pointerEvents: 'none',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+	color: 'inherit',
+	width: '100%',
+	'& .MuiInputBase-input': {
+		padding: theme.spacing(1, 1, 1, 0),
+		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+		transition: theme.transitions.create('width'),
+		[theme.breakpoints.up('sm')]: {
+			width: '12ch',
+			'&:focus': {
+				width: '20ch',
+			},
+		},
+	},
+}));

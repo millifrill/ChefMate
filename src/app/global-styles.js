@@ -12,12 +12,13 @@ export const globalStyles = css`
 export const Main = styled.main`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	align-items: center;
 	padding: 4rem;
 	max-width: 1600px;
 	margin: auto;
 	min-height: 100vh;
+	background-color: #222;
 `;
 
 export const BannerContainer = styled.div`
