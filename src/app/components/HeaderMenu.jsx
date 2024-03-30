@@ -1,36 +1,41 @@
 'use client';
 
-import * as React from 'react';
+import React, { useState } from 'react';
+import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
+import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import MailIcon from '@mui/icons-material/Mail';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import Switch from './Switch';
 import Link from 'next/link';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function HeaderMenu() {
-	const [open, setOpen] = React.useState(false);
+const drawerWidth = 240;
+const navItems = ['Recipes', 'About', 'Contact'];
 
-	const toggleDrawer = (newOpen) => () => {
-		setOpen(newOpen);
+export default function HeaderMenu(props) {
+	const { window } = props;
+	const [mobileOpen, setMobileOpen] = useState(false);
+
+	const handleDrawerToggle = () => {
+		setMobileOpen((prevState) => !prevState);
 	};
 
-	const DrawerList = (
-		<Box sx={{ width: 250, backgroundColor: '#000' }} onClick={toggleDrawer(false)}>
+	const drawer = (
+		<Box
+			onClick={handleDrawerToggle}
+			sx={{ textAlign: 'left', width: 250, backgroundColor: '#000' }}>
 			<List sx={{ backgroundColor: '#000' }}>
 				<ListItem>
 					<ListItemText sx={{ color: '#fff' }}>Toggle theme</ListItemText>
@@ -55,83 +60,64 @@ export default function HeaderMenu() {
 		</Box>
 	);
 
+	const container = window !== undefined ? () => window().document.body : undefined;
+	const isMobile = useMediaQuery('(max-width: 600px)');
+
 	return (
-		<div>
-			<Box sx={{ flexGrow: 1 }}>
-				<AppBar position='static' sx={{ backgroundColor: '#000' }}>
-					<Toolbar>
-						<IconButton
-							size='large'
-							edge='start'
-							color='inherit'
-							aria-label='open drawer'
-							onClick={toggleDrawer(true)}
-							sx={{ mr: 2 }}>
-							<MenuIcon />
-						</IconButton>
-						<Typography
-							variant='h5'
-							noWrap
-							component='div'
-							sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: 'white' }}>
-							ChefMate
-						</Typography>
-						<Search>
-							<SearchIconWrapper>
-								<SearchIcon />
-							</SearchIconWrapper>
-							<StyledInputBase
-								placeholder='Search…'
-								inputProps={{ 'aria-label': 'search' }}
-							/>
-						</Search>
-					</Toolbar>
-				</AppBar>
+		<Box sx={{ display: 'flex', flexDirection: 'row' }}>
+			<CssBaseline />
+			<AppBar component='nav'>
+				<Toolbar sx={{ backgroundColor: '#000' }}>
+					<IconButton
+						color='inherit'
+						aria-label='open drawer'
+						edge='start'
+						onClick={handleDrawerToggle}
+						sx={{ mr: 2, display: { sm: 'none' } }}>
+						<MenuIcon />
+					</IconButton>
+					<Typography
+						variant='h6'
+						component='div'
+						sx={{ flexGrow: 1, display: 'block', color: '#fff' }}>
+						ChefMate
+					</Typography>
+					<Box sx={{ display: 'flex', flexDirection: 'row' }}>
+						{!isMobile &&
+							['Recipes', 'Contact'].map((text, index) => (
+								<ListItem key={text} disablePadding>
+									<Link href={index % 2 === 0 ? '/' : '/contact'}>
+										<ListItemButton>
+											<ListItemText primary={text} />
+										</ListItemButton>
+									</Link>
+								</ListItem>
+							))}
+					</Box>
+				</Toolbar>
+			</AppBar>
+			<nav>
+				<Drawer
+					container={container}
+					variant='temporary'
+					open={mobileOpen}
+					onClose={handleDrawerToggle}
+					ModalProps={{
+						keepMounted: true, // Better open performance on mobile.
+					}}
+					sx={{
+						display: { xs: 'block', sm: 'none' },
+						'& .MuiDrawer-paper': {
+							boxSizing: 'border-box',
+							width: drawerWidth,
+						},
+					}}>
+					{drawer}
+				</Drawer>
+			</nav>
+			<Box component='main' sx={{ p: 3 }}>
+				<Toolbar />
 			</Box>
-			<Drawer open={open} onClose={toggleDrawer(false)}>
-				{DrawerList}
-			</Drawer>
-		</div>
+		</Box>
 	);
 }
-
-const Search = styled('div')(({ theme }) => ({
-	position: 'relative',
-	borderRadius: theme.shape.borderRadius,
-	backgroundColor: alpha(theme.palette.common.white, 0.15),
-	'&:hover': {
-		backgroundColor: alpha(theme.palette.common.white, 0.25),
-	},
-	marginLeft: 0,
-	width: '100%',
-	[theme.breakpoints.up('sm')]: {
-		marginLeft: theme.spacing(1),
-		width: 'auto',
-	},
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-	padding: theme.spacing(0, 2),
-	height: '100%',
-	position: 'absolute',
-	pointerEvents: 'none',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-	color: 'inherit',
-	width: '100%',
-	'& .MuiInputBase-input': {
-		padding: theme.spacing(1, 1, 1, 0),
-		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-		transition: theme.transitions.create('width'),
-		[theme.breakpoints.up('sm')]: {
-			width: '12ch',
-			'&:focus': {
-				width: '20ch',
-			},
-		},
-	},
-}));
