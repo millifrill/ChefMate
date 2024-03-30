@@ -22,7 +22,6 @@ import Link from 'next/link';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const drawerWidth = 240;
-const navItems = ['Recipes', 'About', 'Contact'];
 
 export default function HeaderMenu(props) {
 	const { window } = props;
@@ -67,7 +66,7 @@ export default function HeaderMenu(props) {
 		<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 			<CssBaseline />
 			<AppBar component='nav'>
-				<Toolbar sx={{ backgroundColor: '#000' }}>
+				<Toolbar sx={{ backgroundColor: '#000', justifyContent: 'space-between' }}>
 					<IconButton
 						color='inherit'
 						aria-label='open drawer'
@@ -76,12 +75,14 @@ export default function HeaderMenu(props) {
 						sx={{ mr: 2, display: { sm: 'none' } }}>
 						<MenuIcon />
 					</IconButton>
-					<Typography
-						variant='h6'
-						component='div'
-						sx={{ flexGrow: 1, display: 'block', color: '#fff' }}>
-						ChefMate
-					</Typography>
+					<Link href={'/'}>
+						<Typography
+							variant='h6'
+							component='div'
+							sx={{ flexGrow: 1, display: 'block', color: '#fff' }}>
+							ChefMate
+						</Typography>
+					</Link>
 					<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 						{!isMobile &&
 							['Recipes', 'Contact'].map((text, index) => (
@@ -115,7 +116,7 @@ export default function HeaderMenu(props) {
 					{drawer}
 				</Drawer>
 			</nav>
-			<Box component='main' sx={{ p: 3 }}>
+			<Box component='main' sx={{ flexGrow: 1, p: 0 }}>
 				<Toolbar />
 			</Box>
 		</Box>

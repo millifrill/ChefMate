@@ -24,6 +24,8 @@ export const Main = styled.main`
 export const BannerContainer = styled.div`
 	position: relative;
 	width: 100%;
+	margin: 0;
+	background-color: #222;
 `;
 
 export const ContentWrapper = styled.div`
