@@ -1,15 +1,17 @@
 'use client';
 
 import RecipesBanner from './components/RecipesBanner';
-import { Main } from './global-styles';
-import RecipeCard from './components/RecipeCard';
+import { Main, MainBox } from './global-styles';
+import Recipes from './recipes/page';
 
 export default function Home() {
 	return (
 		<>
 			<RecipesBanner />
 			<Main>
-				<RecipeCard />
+				<MainBox>
+					<Recipes />
+				</MainBox>
 			</Main>
 		</>
 	);

@@ -12,13 +12,19 @@ export const globalStyles = css`
 export const Main = styled.main`
 	display: flex;
 	flex-direction: column;
-	/* justify-content: space-between; */
-	align-items: center;
+	align-items: flex-start;
 	padding: 4rem;
-	max-width: 1600px;
-	margin: auto;
+	margin: 0;
 	min-height: 100vh;
 	background-color: #222;
+`;
+
+export const MainBox = styled.main`
+	display: flex;
+	flex-direction: column;
+	align-self: flex-start;
+	max-width: 1400px;
+	margin: 0 auto;
 `;
 
 export const BannerContainer = styled.div`
