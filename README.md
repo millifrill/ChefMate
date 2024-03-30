@@ -1,4 +1,4 @@
-Sista inlämning - Labb 3
+## Sista inlämning - Labb 3
 
 För G
 
@@ -12,7 +12,6 @@ Hämta data från extern sida. Valfritt att använda REST API eller GraphQL
 
 Skriv minst 3 test som passerar om man skriver "yarn test" / "npm test"
 
-
 För VG
 
 Minst 12 komponenter
@@ -23,8 +22,9 @@ Enhetligt formaterad kod
 
 ## ChefMafe
 
-A recipe finder. 
+Recipe app made with Next.js 14 , MUI, emotion/styled and TheMealDB API.
 
+Hoasted on Vercel. [https://chef-mate-recipes.vercel.app/contact]
 
 ## Getting Started
 
@@ -35,5 +35,3 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
