@@ -13,7 +13,7 @@ export const Main = styled.main`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding: 4rem;
+	padding: 30px;
 	margin: 0;
 	min-height: 100vh;
 	background-color: #222;
