@@ -48,7 +48,7 @@ export default function Filter({ setSearchQuery }) {
 					},
 				}}>
 				<InputLabel id='filter-category--select-label' sx={{ color: '#fff' }}>
-					Filter categories
+					Filter by category
 				</InputLabel>
 				<Select
 					labelId='filter-category--select-label'
