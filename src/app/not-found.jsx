@@ -7,13 +7,17 @@ export default function NotFound() {
 	return (
 		<Main>
 			<H2>There was a problem.</H2>
-			<p>We could not find the page you where looking for.</p>
+			<P>We could not find the page you where looking for.</P>
 		</Main>
 	);
 }
 
 const H2 = styled.h1`
 	font-size: 2rem;
-	margin-top: 50px;
-	margin-bottom: 20px;
+	margin: 50px auto 20px;
+`;
+
+const P = styled.p`
+	font-size: 1rem;
+	margin: 10px auto;
 `;
