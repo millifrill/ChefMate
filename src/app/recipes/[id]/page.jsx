@@ -6,6 +6,7 @@ import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
+import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import theme from '../../theme/theme';
 import { ThemeProvider } from '@emotion/react';
@@ -38,7 +39,7 @@ export default function Page({ params }) {
 	return (
 		<ThemeProvider theme={theme}>
 			<Main>
-				<MainBox>
+				<MainBox style={{ maxWidth: '800px' }}>
 					{recipesInstructionsData && (
 						<>
 							<Box sx={{ width: '100%' }}>
@@ -68,22 +69,45 @@ export default function Page({ params }) {
 							<Box>
 								<Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
 									<CustomPaper square={false} elevation={3}>
-										<Typography variant='h5'>Ingredients:</Typography>
-										<ul style={{ margin: '20px 16px' }}>
-											{Object.keys(recipesInstructionsData).map((key) => {
-												if (
-													key.startsWith('strIngredient') &&
-													recipesInstructionsData[key]
-												) {
-													return <li key={key}>{recipesInstructionsData[key]}</li>;
+										<Typography variant='h5' m='20px'>
+											Ingredients:
+										</Typography>
+										<Divider sx={{ backgroundColor: '#222', margin: '10px' }} />
+										<ul style={{ margin: '10px' }}>
+											{Array.from({ length: 20 }).map((_, index) => {
+												const measureKey = `strMeasure${index + 1}`;
+												const measure = recipesInstructionsData[measureKey];
+												const ingredientKey = `strIngredient${index + 1}`;
+												const ingredient = recipesInstructionsData[ingredientKey];
+
+												if (ingredient && measure) {
+													return (
+														<Box
+															key={index}
+															style={{
+																margin: '20px',
+															}}>
+															<input
+																type='checkbox'
+																style={{ marginRight: '10px' }}
+															/>
+															{`${measure} ${ingredient}`}
+														</Box>
+													);
 												}
 												return null;
 											})}
 										</ul>
 									</CustomPaper>
 									<CustomPaper square={false} elevation={3}>
-										<Typography variant='h5'>Instructions:</Typography>
-										<Typography variant='body2' sx={{ marginTop: '20px' }}>
+										<Typography variant='h5' m='20px'>
+											Instructions:
+										</Typography>
+										<Divider sx={{ backgroundColor: '#222', margin: '10px' }} />
+
+										<Typography
+											variant='body1'
+											sx={{ margin: '20px', lineHeight: '1.5rem' }}>
 											{recipesInstructionsData.strInstructions}
 										</Typography>
 									</CustomPaper>
@@ -117,7 +141,7 @@ export default function Page({ params }) {
 // }));
 
 const CustomPaper = styled(Paper)(({ theme }) => ({
-	minWidth: 200,
+	minWidth: 300,
 	padding: '10px',
 	backgroundColor: 'black',
 	color: 'white',
