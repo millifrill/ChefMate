@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import theme from '../../theme/theme';
 import { ThemeProvider } from '@emotion/react';
+import YouTube from 'react-youtube';
 
 export default function Page({ params }) {
 	const { id } = params;
@@ -66,7 +67,6 @@ export default function Page({ params }) {
 							</Box>
 							<Box>
 								<Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-									{' '}
 									<CustomPaper square={false} elevation={3}>
 										<Typography variant='h5'>Ingredients:</Typography>
 										<ul style={{ margin: '20px 16px' }}>
@@ -89,6 +89,16 @@ export default function Page({ params }) {
 									</CustomPaper>
 								</Stack>
 							</Box>
+							{recipesInstructionsData.strYoutube && (
+								<Box sx={{ mt: 2 }}>
+									<CustomPaper square={false} elevation={3}>
+										<YouTube
+											videoId={recipesInstructionsData.strYoutube.split('v=')[1]}
+											opts={{ width: '100%' }}
+										/>
+									</CustomPaper>
+								</Box>
+							)}
 						</>
 					)}
 				</MainBox>
