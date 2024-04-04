@@ -8,7 +8,8 @@ import Link from 'next/link';
 
 export default function RecipeCard({ recipe }) {
 	return (
-		<Link href={'/recipes/${recipe?.idMeal}'}>
+		// <Link href={'/recipes/${recipe?.idMeal}'}>
+		<Link href={`/recipes/${recipe?.idMeal}`}>
 			<Card
 				sx={{
 					width: 300,
