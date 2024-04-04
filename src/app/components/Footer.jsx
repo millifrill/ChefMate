@@ -30,7 +30,7 @@ export default function StickyFooter() {
 			}}>
 			<Container maxWidth='sm'>
 				<Typography variant='body1' color='#d8d8d8'>
-					Lorum isum.
+					{/* Lorum isum. */}
 				</Typography>
 				<Copyright />
 			</Container>
