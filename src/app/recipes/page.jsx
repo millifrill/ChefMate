@@ -15,7 +15,6 @@ export default function Recipes() {
 	const recipesData = useRecipesData(searchQuery);
 
 	return (
-		// <>
 		<ThemeProvider theme={theme}>
 			<Box
 				display={'flex'}
@@ -34,6 +33,5 @@ export default function Recipes() {
 				))}
 			</Grid>
 		</ThemeProvider>
-		// </>
 	);
 }
