@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Main } from '@/app/global-styles';
+import { Main, MainBox } from '@/app/global-styles';
 import { Typography, Box } from '@mui/material';
 import Image from 'next/image';
 import Stack from '@mui/material/Stack';
@@ -12,7 +12,6 @@ import { ThemeProvider } from '@emotion/react';
 
 export default function Page({ params }) {
 	const { id } = params;
-	const [imageLoaded, setImageLoaded] = useState(false);
 	const [recipesInstructionsData, setRecipesInstructionsData] = useState(null);
 
 	useEffect(() => {
@@ -38,60 +37,61 @@ export default function Page({ params }) {
 	return (
 		<ThemeProvider theme={theme}>
 			<Main>
-				{recipesInstructionsData && (
-					<>
-						<Box>
-							<Box>
-								<Typography
-									variant='h1'
-									sx={{
-										fontSize: '2rem',
-									}}>
-									{recipesInstructionsData?.strMeal}
-								</Typography>
-							</Box>
-							<Box sx={{ width: '100%', m: '10px 0', p: 0 }}>
-								<CustomPaper square={false} elevation={3} sx={{ p: 1 }}>
-									<Image
-										src={recipesInstructionsData.strMealThumb}
-										alt={recipesInstructionsData.strMeal}
-										width={300}
-										height={300}
+				<MainBox>
+					{recipesInstructionsData && (
+						<>
+							<Box sx={{ width: '100%' }}>
+								<Box>
+									<Typography
+										variant='h1'
 										sx={{
-											width: '100%',
-											height: 'auto',
-										}}
-									/>
-								</CustomPaper>
-							</Box>
-						</Box>
-						<Box>
-							<Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-								{' '}
-								<CustomPaper square={false} elevation={3}>
-									<Typography variant='h5'>Ingredients:</Typography>
-									<ul style={{ margin: '20px 16px' }}>
-										{Object.keys(recipesInstructionsData).map((key) => {
-											if (
-												key.startsWith('strIngredient') &&
-												recipesInstructionsData[key]
-											) {
-												return <li key={key}>{recipesInstructionsData[key]}</li>;
-											}
-											return null;
-										})}
-									</ul>
-								</CustomPaper>
-								<CustomPaper square={false} elevation={3}>
-									<Typography variant='h5'>Instructions:</Typography>
-									<Typography variant='body2' sx={{ marginTop: '20px' }}>
-										{recipesInstructionsData.strInstructions}
+											fontSize: '2rem',
+										}}>
+										{recipesInstructionsData?.strMeal}
 									</Typography>
-								</CustomPaper>
-							</Stack>
-						</Box>
-					</>
-				)}
+								</Box>
+								<Box sx={{ width: '100%', m: '10px 0', p: 0 }}>
+									<CustomPaper square={false} elevation={3} sx={{ p: 1 }}>
+										<Image
+											src={recipesInstructionsData.strMealThumb}
+											alt={recipesInstructionsData.strMeal}
+											layout='responsive'
+											objectFit='cover'
+											quality={100}
+											width={300}
+											height={300}
+										/>
+									</CustomPaper>
+								</Box>
+							</Box>
+							<Box>
+								<Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+									{' '}
+									<CustomPaper square={false} elevation={3}>
+										<Typography variant='h5'>Ingredients:</Typography>
+										<ul style={{ margin: '20px 16px' }}>
+											{Object.keys(recipesInstructionsData).map((key) => {
+												if (
+													key.startsWith('strIngredient') &&
+													recipesInstructionsData[key]
+												) {
+													return <li key={key}>{recipesInstructionsData[key]}</li>;
+												}
+												return null;
+											})}
+										</ul>
+									</CustomPaper>
+									<CustomPaper square={false} elevation={3}>
+										<Typography variant='h5'>Instructions:</Typography>
+										<Typography variant='body2' sx={{ marginTop: '20px' }}>
+											{recipesInstructionsData.strInstructions}
+										</Typography>
+									</CustomPaper>
+								</Stack>
+							</Box>
+						</>
+					)}
+				</MainBox>
 			</Main>
 		</ThemeProvider>
 	);

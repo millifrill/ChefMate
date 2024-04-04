@@ -23,7 +23,7 @@ export const MainBox = styled.main`
 	display: flex;
 	flex-direction: column;
 	align-self: flex-start;
-	max-width: 1400px;
+	max-width: 1200px;
 	margin: 0 auto;
 `;
 
