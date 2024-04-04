@@ -21,11 +21,11 @@ export default function Recipes() {
 				flexDirection={{ xs: 'column', sm: 'row' }}
 				alignItems='center'
 				sx={{ alignSelf: 'center' }}>
-				<Filter setSearchQuery={setSearchQuery} />
-				<Search setSearchQuery={setSearchQuery} sx={{ mr: { xs: 0, sm: 2 } }} />
+				<Filter setSearchQuery={setSearchQuery} sx={{ ml: { xs: 0, sm: 1, md: 1, lg: 1 } }} />
+				<Search setSearchQuery={setSearchQuery} sx={{ mr: { xs: 0, sm: 1, md: 1, lg: 1 } }} />
 			</Box>
 
-			<Grid container spacing={1}>
+			<Grid container spacing={2}>
 				{recipesData.map((recipe) => (
 					<Grid item key={recipe?.idMeal} xs={12} sm={6} md={4} lg={3}>
 						<RecipeCard recipe={recipe} />
