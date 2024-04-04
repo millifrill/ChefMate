@@ -12,6 +12,9 @@ export default function useRecipesData(searchQuery) {
 				const response = await fetch(
 					`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`,
 				);
+				if (!response.ok) {
+					throw new Error('Failed to fetch data');
+				}
 				const data = await response.json();
 				setRecipesData(data?.meals);
 				console.log(data?.meals);
