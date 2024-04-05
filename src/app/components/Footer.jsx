@@ -28,7 +28,7 @@ export default function StickyFooter() {
 				// backgroundColor: (theme) =>
 				// 	theme.palette.mode === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
 			}}>
-			<Container maxWidth='sm'>
+			<Container>
 				<Typography variant='body1' color='#d8d8d8'>
 					{/* Lorum isum. */}
 				</Typography>

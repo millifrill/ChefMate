@@ -104,12 +104,28 @@ export default function Page({ params }) {
 											Instructions:
 										</Typography>
 										<Divider sx={{ backgroundColor: '#222', margin: '10px' }} />
-
-										<Typography
-											variant='body1'
-											sx={{ margin: '20px', lineHeight: '1.5rem' }}>
-											{recipesInstructionsData.strInstructions}
-										</Typography>
+										<ol style={{ margin: 10, padding: '10px', listStyle: 'none' }}>
+											{recipesInstructionsData.strInstructions
+												.split('\n')
+												.map((instruction, index) => (
+													<li
+														key={index}
+														style={{
+															display: 'flex',
+															alignItems: 'flex-start',
+															marginBottom: '25px',
+														}}>
+														<input type='checkbox' style={{ margin: '5px' }} />
+														<div
+															style={{ display: 'flex', alignItems: 'flex-start' }}>
+															<span style={{ marginRight: '10px' }}>
+																{index + 1}
+															</span>
+															<span style={{ flex: 1 }}>{instruction}</span>
+														</div>
+													</li>
+												))}
+										</ol>
 									</CustomPaper>
 								</Stack>
 							</Box>
