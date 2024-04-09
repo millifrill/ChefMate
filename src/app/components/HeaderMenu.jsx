@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -20,11 +20,12 @@ import MailIcon from '@mui/icons-material/Mail';
 import Switch from './Switch';
 import Link from 'next/link';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { ThemeContext } from '../context/themeContext';
 
 const drawerWidth = 240;
 
-export default function HeaderMenu(props) {
-	const { window } = props;
+export default function HeaderMenu({ window }) {
+	const { setMode, mode } = useContext(ThemeContext);
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const handleDrawerToggle = () => {
@@ -38,7 +39,16 @@ export default function HeaderMenu(props) {
 			<List sx={{ backgroundColor: '#000' }}>
 				<ListItem>
 					<ListItemText sx={{ color: '#fff' }}>Toggle theme</ListItemText>
-					<Switch />
+					<Switch
+						checked={mode}
+						onClick={() => {
+							if (mode) {
+								setMode(false);
+							} else {
+								setMode(true);
+							}
+						}}
+					/>
 				</ListItem>
 			</List>
 			<Divider sx={{ backgroundColor: '#222' }} />
@@ -65,7 +75,7 @@ export default function HeaderMenu(props) {
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 			<CssBaseline />
-			<AppBar component='nav'>
+			<AppBar component='nav' sx={{ backgroundColor: theme.palette.primary.main }}>
 				<Toolbar sx={{ backgroundColor: '#000', justifyContent: 'space-between' }}>
 					<IconButton
 						color='inherit'
@@ -79,7 +89,7 @@ export default function HeaderMenu(props) {
 						<Typography
 							variant='h6'
 							component='div'
-							sx={{ flexGrow: 1, display: 'block', color: '#fff' }}>
+							sx={{ flexGrow: 1, display: 'block', color: theme.palette.text.primary }}>
 							ChefMate
 						</Typography>
 					</Link>
@@ -104,13 +114,14 @@ export default function HeaderMenu(props) {
 					open={mobileOpen}
 					onClose={handleDrawerToggle}
 					ModalProps={{
-						keepMounted: true, // Better open performance on mobile.
+						keepMounted: true,
 					}}
 					sx={{
 						display: { xs: 'block', sm: 'none' },
 						'& .MuiDrawer-paper': {
 							boxSizing: 'border-box',
 							width: drawerWidth,
+							backgroundColor: theme.palette.background.default,
 						},
 					}}>
 					{drawer}

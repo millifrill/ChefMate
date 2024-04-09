@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import HeaderMenu from './components/HeaderMenu';
 import Footer from './components/Footer';
+import ContextProviders from './context';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,9 +15,12 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
 			<body className={inter.className}>
-				<HeaderMenu />
-				{children}
-				<Footer />
+				<ContextProviders>
+					{/* <HeaderMenu check={darkMode} change={() => setDarkMode(!darkMode)} /> */}
+					<HeaderMenu />
+					{children}
+					<Footer />
+				</ContextProviders>
 			</body>
 		</html>
 	);
