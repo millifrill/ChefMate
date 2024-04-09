@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
-import theme from '../../theme/theme';
+import breakpointsTheme from '../../theme/theme';
 import { ThemeProvider } from '@emotion/react';
 import YouTube from 'react-youtube';
 
@@ -37,7 +37,7 @@ export default function Page({ params }) {
 	}, [id]);
 
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider theme={breakpointsTheme}>
 			<Main>
 				<MainBox style={{ maxWidth: '800px' }}>
 					{recipesInstructionsData && (

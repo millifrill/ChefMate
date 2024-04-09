@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './../theme/theme';
+import breakpointsTheme from './../theme/theme';
 import useRecipesData from '../hooks/useRecipesData';
 import Search from '../components/Search';
 import Filter from '../components/Filter';
@@ -15,7 +15,7 @@ export default function Recipes() {
 	const recipesData = useRecipesData(searchQuery);
 
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider theme={breakpointsTheme}>
 			<Box
 				display={'flex'}
 				flexDirection={{ xs: 'column', sm: 'row' }}
