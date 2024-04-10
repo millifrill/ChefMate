@@ -4,6 +4,9 @@ const nextConfig = {
 	images: {
 		domains: ['www.themealdb.com'],
 	},
+	experimental: {
+		forceSwcTransforms: true,
+	},
 };
 
 module.exports = nextConfig;
