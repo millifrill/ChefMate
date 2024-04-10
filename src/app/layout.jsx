@@ -14,14 +14,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
-			<body className={inter.className}>
-				<ContextProviders>
-					{/* <HeaderMenu check={darkMode} change={() => setDarkMode(!darkMode)} /> */}
+			<ContextProviders>
+				<body className={inter.className}>
 					<HeaderMenu />
 					{children}
 					<Footer />
-				</ContextProviders>
-			</body>
+				</body>
+			</ContextProviders>
 		</html>
 	);
 }
