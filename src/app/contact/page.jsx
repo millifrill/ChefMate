@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import ContactBanner from './../components/ContactBanner';
 import { MainBox } from '../global-styles';
 import Typography from '@mui/material/Typography';
@@ -12,7 +13,9 @@ export default function Contact() {
 			<ContactBanner />
 			<MainPaper>
 				<MainBox>
-					<Typography>Mail your questions to: millifrill@gmail.com</Typography>
+					<Typography sx={{ mt: '20px' }}>
+						Mail your questions to: millifrill@gmail.com
+					</Typography>
 				</MainBox>
 			</MainPaper>
 		</>
