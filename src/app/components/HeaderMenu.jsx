@@ -30,7 +30,6 @@ export default function HeaderMenu({ window }) {
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const handleDrawerToggle = () => {
-		console.log('drawer clicked');
 		setMobileOpen((prevState) => !prevState);
 	};
 
