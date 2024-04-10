@@ -9,10 +9,11 @@ import useRecipesData from '../hooks/useRecipesData';
 import Search from '../components/Search';
 import Filter from '../components/Filter';
 import RecipeCard from '../components/RecipeCard';
+import { Typography } from '@mui/material';
 
 export default function Recipes() {
 	const [searchQuery, setSearchQuery] = useState('');
-	const recipesData = useRecipesData(searchQuery);
+	const { recipesData, errorMessage } = useRecipesData(searchQuery);
 
 	return (
 		<ThemeProvider theme={breakpointsTheme}>
@@ -25,13 +26,19 @@ export default function Recipes() {
 				<Search setSearchQuery={setSearchQuery} sx={{ mr: { xs: 0, sm: 1, md: 1, lg: 1 } }} />
 			</Box>
 
-			<Grid container spacing={2}>
-				{recipesData.map((recipe) => (
-					<Grid item key={recipe?.idMeal} xs={12} sm={6} md={4} lg={3}>
-						<RecipeCard recipe={recipe} />
-					</Grid>
-				))}
-			</Grid>
+			{errorMessage ? (
+				<Box>
+					<Typography sx={{ margin: 'auto', textAlign: 'center' }}>{errorMessage}</Typography>
+				</Box>
+			) : (
+				<Grid container spacing={2}>
+					{recipesData.map((recipe) => (
+						<Grid item key={recipe?.idMeal} xs={12} sm={6} md={4} lg={3}>
+							<RecipeCard recipe={recipe} />
+						</Grid>
+					))}
+				</Grid>
+			)}
 		</ThemeProvider>
 	);
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 export default function useRecipesData(searchQuery) {
 	const [recipesData, setRecipesData] = useState([]);
+	const [errorMessage, setErrorMessage] = useState(null);
 
 	useEffect(() => {
 		const fetchRecipesData = async () => {
@@ -15,7 +16,15 @@ export default function useRecipesData(searchQuery) {
 					throw new Error('Failed to fetch data');
 				}
 				const data = await response.json();
-				setRecipesData(data?.meals);
+				if (!data?.meals?.length) {
+					setErrorMessage(
+						'No recipes were found for your search. Try using other keywords or the filter.',
+					);
+					setRecipesData([]);
+				} else {
+					setErrorMessage(null);
+					setRecipesData(data?.meals);
+				}
 			} catch (error) {
 				console.error('Error fetching data:', error);
 			}
@@ -24,5 +33,5 @@ export default function useRecipesData(searchQuery) {
 		fetchRecipesData();
 	}, [searchQuery]);
 
-	return recipesData;
+	return { recipesData, errorMessage };
 }
