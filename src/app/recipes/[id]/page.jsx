@@ -28,13 +28,11 @@ export default function Page({ params }) {
 				}
 				const data = await response.json();
 				setRecipesInstructionsData(data.meals[0]);
-				// console.log(data.meals[0]);
 			} catch (error) {
 				console.error('Error fetching data:', error);
 			}
 		};
 		fetchRecipesInstructionsData();
-		// console.log(fetchRecipesInstructionsData);
 	}, [id]);
 
 	return (
@@ -130,6 +128,7 @@ export default function Page({ params }) {
 									<ol style={{ margin: 10, listStyle: 'none' }}>
 										{recipesInstructionsData.strInstructions
 											.split('\n')
+											.filter((instruction) => instruction.trim() !== '')
 											.map((instruction, index) => (
 												<li
 													key={`${recipesInstructionsData.idMeal}-${index}`}
