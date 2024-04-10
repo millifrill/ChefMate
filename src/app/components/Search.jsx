@@ -31,7 +31,12 @@ export default function Search({ setSearchQuery }) {
 			<TextField
 				sx={{
 					width: '300px',
-					'& label': { color: theme.palette.text.primary },
+					'& label': {
+						color: theme.palette.text.primary,
+						'&.Mui-focused': {
+							color: theme.palette.text.primary,
+						},
+					},
 					'& .MuiOutlinedInput-root': {
 						'& fieldset': {
 							borderColor: theme.palette.text.primary,
@@ -42,13 +47,12 @@ export default function Search({ setSearchQuery }) {
 						'&.Mui-focused fieldset': {
 							borderColor: theme.palette.text.primary,
 						},
+						'& .MuiInputLabel-root': {
+							'&.Mui-focused': {
+								color: theme.palette.text.primary,
+							},
+						},
 						'& .MuiOutlinedInput-input': {
-							color: theme.palette.text.primary,
-						},
-						'&:hover .MuiOutlinedInput-input': {
-							color: theme.palette.text.primary,
-						},
-						'&.Mui-focused .MuiOutlinedInput-input': {
 							color: theme.palette.text.primary,
 						},
 					},

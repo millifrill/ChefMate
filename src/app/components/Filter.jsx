@@ -1,6 +1,6 @@
 'use client';
 
-import React, {  useContext } from 'react';
+import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -23,8 +23,12 @@ export default function Filter({ setSearchQuery }) {
 				fullWidth
 				sx={{
 					width: '300px',
-
-					'& label': { color: theme.palette.text.primary },
+					'& label': {
+						color: theme.palette.text.primary,
+						'&.Mui-focused': {
+							color: theme.palette.text.primary,
+						},
+					},
 					'& .MuiOutlinedInput-root': {
 						'& fieldset': {
 							borderColor: theme.palette.text.primary,
@@ -35,18 +39,23 @@ export default function Filter({ setSearchQuery }) {
 						'&.Mui-focused fieldset': {
 							borderColor: theme.palette.text.primary,
 						},
+						'& .MuiInputLabel-root': {
+							'&.Mui-focused': {
+								color: theme.palette.text.primary,
+							},
+						},
 						'& .MuiOutlinedInput-input': {
 							color: theme.palette.text.primary,
 						},
-						'&:hover .MuiOutlinedInput-input': {
+					},
+					'& .MuiSelect-root': {
+						color: theme.palette.text.primary,
+						'&:focus': {
 							color: theme.palette.text.primary,
 						},
-						'&.Mui-focused .MuiOutlinedInput-input': {
-							color: theme.palette.text.primary,
-						},
-						'& .MuiSelect-icon': {
-							color: theme.palette.text.primary,
-						},
+					},
+					'& .MuiSelect-icon': {
+						color: theme.palette.text.primary,
 					},
 				}}>
 				<InputLabel
