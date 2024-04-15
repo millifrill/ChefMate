@@ -92,19 +92,10 @@ export default function Page({ params }) {
 															margin: '20px 0px ',
 														}}>
 														<Checkbox
+															color='default'
 															sx={{
 																width: '40px',
 																height: '20px',
-																backgroundColor: theme.palette.background.primary,
-																'&.Mui-checked': {
-																	color: theme.palette.primary.main,
-																	backgroundColor:
-																		theme.palette.background.primary,
-																},
-																'& .MuiSvgIcon-root': {
-																	backgroundColor:
-																		theme.palette.background.primary,
-																},
 															}}
 														/>
 														{`${measure} ${ingredient}`}
@@ -138,8 +129,8 @@ export default function Page({ params }) {
 														margin: '20px 0px',
 													}}>
 													<Checkbox
+														color='default'
 														sx={{
-															backgroundColor: theme.palette.background.primary,
 															width: '40px',
 															height: '20px',
 														}}
