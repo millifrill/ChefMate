@@ -69,7 +69,16 @@ export default function Filter({ setSearchQuery }) {
 					value={category}
 					label='Filter categories'
 					onChange={handleChange}
-					sx={{ color: theme.palette.text.primary }}>
+					inputProps={{
+						MenuProps: {
+							MenuListProps: {
+								sx: {
+									backgroundColor: theme.palette.background.default,
+									color: theme.palette.text.primary,
+								},
+							},
+						},
+					}}>
 					<MenuItem value=''>All categories</MenuItem>
 					<MenuItem value='Pasta'>Pasta</MenuItem>
 					<MenuItem value='Beef'>Beef</MenuItem>
