@@ -18,7 +18,11 @@ export default function Filter({ setSearchQuery }) {
 	};
 
 	return (
-		<Box sx={{ mr: { xs: 0, sm: 1 }, mb: { xs: 1, sm: 4 } }}>
+		<Box
+			sx={{
+				mr: { xs: 0, sm: 1 },
+				mb: { xs: 1, sm: 4 },
+			}}>
 			<FormControl
 				fullWidth
 				sx={{
@@ -71,6 +75,15 @@ export default function Filter({ setSearchQuery }) {
 					onChange={handleChange}
 					inputProps={{
 						MenuProps: {
+							anchorOrigin: {
+								vertical: 'bottom',
+								horizontal: 'center',
+								transformOrigin: {
+									vertical: 'top',
+									horizontal: 'left',
+								},
+								getContentAnchorEl: null,
+							},
 							MenuListProps: {
 								sx: {
 									backgroundColor: theme.palette.background.default,
