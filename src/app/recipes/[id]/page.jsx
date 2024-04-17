@@ -51,7 +51,7 @@ export default function Page({ params }) {
 								</Typography>
 							</Box>
 							<Box sx={{ width: '100%', m: '10px 0', p: 0 }}>
-								<CustomPaper square={false} elevation={8} sx={{ p: 1 }}>
+								<CustomPaper square={false} elevation={8} sx={{ p: 4 }}>
 									<Image
 										src={recipesInstructionsData.strMealThumb}
 										alt={recipesInstructionsData.strMeal}
